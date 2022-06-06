@@ -1,10 +1,22 @@
+import Header from './components/Header';
+import Product from './components/Product';
 import './index.css';
+import products from "./products.json"
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <>
+      <Header />
+      <div className="productContainer">
+        <div className="productBoxs">
+          {
+            products.map(product => {
+             return <Product product={product} />
+            })
+          }
+        </div>
+      </div>
+    </>
   );
 }
 
