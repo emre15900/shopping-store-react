@@ -25,11 +25,28 @@ function Product({product, basket, setBasket}) {
     }
   }
 
+  function removeBasket() {
+    const removeFind = basket.find(item => item.id === product.id)
+    removeFind.amount -=1;
+    if (removeFind.amount === 0) {
+      setBasket([...basket.filter(item => item.id !== product.id)])
+    }
+    else{
+      setBasket([...basket.filter(item => item.id !== product.id), {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        amount: removeFind.amount,
+        img: product.img
+      }])
+    }
+  }
+
   return (
     <div>
         <div className="product">
             <div className="countProduct">
-            <button onClick={addBasket}>+</button> <b>0</b> <button>-</button>
+            <button onClick={addBasket}>+</button> <b>0</b> <button onClick={removeBasket}>-</button>
             </div>
             <img src={product.img} />
             <div className="productsInfo">
