@@ -1,11 +1,15 @@
 import React from 'react'
 
-function Product({product}) {
+function Product({product, basket, setBasket}) {
+ function addBasket(){
+   const addFind = basket.find(item => item.id === product.id )
+   
+ }
   return (
     <div>
         <div className="product">
             <div className="countProduct">
-            <button>+</button> <b>0</b> <button>-</button>
+            <button onClick={addBasket}>+</button> <b>0</b> <button>-</button>
             </div>
             <img src={product.img} />
             <div className="productsInfo">
